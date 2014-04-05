@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "Default PHP folding player";
+    const VERSION = "NoCo";
 
     public function betRequest($game_state)
     {
