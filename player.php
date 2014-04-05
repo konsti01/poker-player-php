@@ -36,7 +36,7 @@ class Player {
 					$bet += $minimum_raise * 10;
 				}
 			}
-			if ($me['bet'] < 500 && $bet > 400) {
+			if ($me['bet'] < 500 && $minimum_raise > 400) {
 				$bet = 0;
 			}
 		}
