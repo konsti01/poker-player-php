@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1518";
+	const VERSION = "NoCo1521";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
