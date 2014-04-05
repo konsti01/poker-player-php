@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1610";
+	const VERSION = "NoCo1616";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -33,6 +33,10 @@ class Player {
 				$bet = $small_blind * 5;
 				$bet = ($bet > $current_buy_in) ? $bet : 0;
 			}
+			
+			if ($me['bet'] > ($current_buy_in)){
+				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+			}
 		} else {
 
 			$point = $this->rank_pre_flop($me['hole_cards']);
@@ -61,11 +65,15 @@ class Player {
 					}
 				}
 			}
+			
+			if ($point > 20){
+				if ($me['bet'] > ($current_buy_in / 2)){
+					$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+				}
+			}
 		}
 		
-		if ($me['bet'] > ($current_buy_in / 2)){
-			$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
-		}
+		
 		
 		return $bet;
 	}
