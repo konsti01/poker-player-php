@@ -97,8 +97,12 @@ class Player {
 			$point *= 1.125;
 		}
 		
-		if (abs($cards[0]['suit'] - $cards[1]['suit'])){
-			
+		if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1){
+			$point *= 1.100;
+		}
+		
+		if ($cards[0]['rank'] - $cards[1]['rank'] == 0){
+			$point *= 1.6;
 		}
 
 		return $point;
