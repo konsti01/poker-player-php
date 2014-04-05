@@ -35,6 +35,7 @@ class Player {
 				//$bet = $current_buy_in;
 			}
 
+			$minimum_raise = $small_blind * 2;
 			$jolapomvan = false;
 			// if ($point > $this->_max_point)
 			if ($point > $this->_all_in) {
@@ -45,6 +46,7 @@ class Player {
 				$jolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.6)) {
 				$bet = $minimum_raise * 5;
+				$jolapomvan = true;
 			}
 
 			if ($jolapomvan) {
