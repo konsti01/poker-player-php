@@ -18,7 +18,7 @@ class Player {
 			
 			
 			if ($response['rank'] > 4){
-				$bet = $me['stack'] * 0.6;
+				//$bet = $me['stack'] * 0.6;
 				$bet = $current_buy_in - $me['bet'] + 50;
 				//$bet = ($bet > $current_buy_in) ? $bet : 0;
 			} elseif(($response['rank'] > 3)){
