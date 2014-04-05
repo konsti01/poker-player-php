@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "NoCo1050";
+    const VERSION = "NoCo1052";
 
     public function betRequest($game_state)
     {
@@ -31,7 +31,7 @@ class Player
 				fwrite($stderr, $response);
 				$response = json_decode($response, true);
 			} catch (Exception $e){
-				
+				fwrite($stderr, $e->error());
 			}
 			
 			//http://192.168.57.181:2048/
