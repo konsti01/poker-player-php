@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1208";
+	const VERSION = "NoCo1216";
 
 	public function betRequest($game_state) {
 		extract($game_state);
@@ -15,6 +15,9 @@ class Player {
 
 			if ($response['rank'] > 0) {
 				$bet = $response['rank'] * 60;
+				if ($minimum_raise > $bet){
+					$bet = $minimum_raise;
+				}
 				/*if ($response['rank'] > 2){
 					$bet += $minimum_raise;
 				}
