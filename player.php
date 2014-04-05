@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1134";
+	const VERSION = "NoCo1137";
 
 	public function betRequest($game_state) {
 		extract($game_state);
@@ -17,6 +17,7 @@ class Player {
 		//http://192.168.57.181:2048/
 
 		$bet = $current_buy_in - $me['bet'];
+		
 		if ($response['rank'] != null) {
 			if ($response['rank'] > 3) {
 				$bet += $minimum_raise * 2;
@@ -42,7 +43,7 @@ class Player {
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
 			curl_setopt($ch, CURLOPT_POST, count($cards));
-			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($cards));
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $cards);
 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
