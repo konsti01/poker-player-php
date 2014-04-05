@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1402";
+	const VERSION = "NoCo1406";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -21,6 +21,9 @@ class Player {
 			} elseif(($response['rank'] > 3)){
 				$bet = $small_blind * 10;
 				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+			} elseif ($response['rank'] > 0){
+				$bet = $small_blind * 5;
+				$bet = ($bet > $current_buy_in) ? $bet : 0;
 			}
 		} else {
 
@@ -173,7 +176,7 @@ class Player {
 			$response = curl_exec($ch);
 			$error = curl_error($ch);
 			curl_close($ch);
-			fwrite($stderr, $error . " - " . $response);
+			fwrite($stderr, $error . " - asd");
 			$response = json_decode($response, true);
 		} catch (Exception $e) {
 			fwrite($stderr, "hello" . $e->error());
