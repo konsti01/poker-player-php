@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "NoCo1037";
+    const VERSION = "NoCo1047";
 
     public function betRequest($game_state)
     {
@@ -17,7 +17,7 @@ class Player
 			try {
 				$cards = array_merge($players[$in_action]['hole_cards'], $community_cards);
 
-				$ch = curl_init("localhost:2048");
+				$ch = curl_init("http://192.168.57.181:2048");
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
 				curl_setopt($ch,CURLOPT_POST, count($cards));
@@ -26,13 +26,14 @@ class Player
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
 				curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-				$response = json_decode(curl_exec($ch), true);
+				$response = curl_exec($ch);
 				curl_close($ch);
-				
+				fwrite($stderr, $response);
+				$response = json_decode($response, true);
 			} catch (Exception $e){
 				
 			}
-			fwrite($stderr, $response);
+			
 			//http://192.168.57.181:2048/
 			
 			$bet = $current_buy_in - $me['bet'];
