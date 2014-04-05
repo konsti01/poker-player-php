@@ -51,7 +51,7 @@ class Player {
 //		//$bet = $current_buy_in - $me['bet'];
 //
 //
-		$bet = rand(0, 1000);
+		$bet = rand(0, 600);
 		
 		return $bet;
 	}
