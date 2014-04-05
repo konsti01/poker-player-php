@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1355";
+	const VERSION = "NoCo1356";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -29,7 +29,6 @@ class Player {
 			$jolapomvan = true;
 		} elseif ($point > $this->_max_point * 0.6) {
 			$bet = $minimum_raise * 5;
-			$bet = ($point / $this->_max_point) * $me['stack'];
 		}
 
 		if ($jolapomvan){
