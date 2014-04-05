@@ -50,10 +50,11 @@ class Player {
 			}
 
 			if ($jolapomvan) {
-				return ($bet > $current_buy_in) ? $bet : $current_buy_in;
+				$result = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 			}
 		}
-		return $bet;
+		$result = min(array($bet, $me['stack']));
+		return $result;
 
 		$response = null;
 		if (count($community_cards) > 0) {
