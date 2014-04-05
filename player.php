@@ -96,11 +96,16 @@ class Player {
 		if ($cards[0]['suit'] == $cards[1]['suit']) {
 			$point *= 1.125;
 		}
+		
+		if (abs($cards[0]['suit'] - $cards[1]['suit'])){
+			
+		}
 
 		return $point;
 	}
 
 	private function parse_card($rank) {
+		$result = 0;
 		if ((int) $rank > 0) {
 			$result = (int) $rank;
 		}
