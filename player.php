@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1137";
+	const VERSION = "NoCo1145";
 
 	public function betRequest($game_state) {
 		extract($game_state);
@@ -10,7 +10,7 @@ class Player {
 
 		$response = null;
 		if (count($community_cards) > 0) {
-			$cards['cards'] = array_merge($me['hole_cards'], $community_cards);
+			$cards['cards'] = json_encode(array_merge($me['hole_cards'], $community_cards));
 			$response = $this->get_rankings($cards);
 		}
 
