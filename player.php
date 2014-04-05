@@ -2,13 +2,13 @@
 
 class Player {
 
-	const VERSION = "NoCo1406";
+	const VERSION = "NoCo1445";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
 
 	public function betRequest($game_state) {
-		$this->asd();
+		//$this->asd();
 		$bet = 0;
 		extract($game_state);
 		$me = $players[$in_action];
@@ -118,7 +118,7 @@ class Player {
 		}
 
 		if ($cards[0]['rank'] - $cards[1]['rank'] == 0) {
-			$point *= 1.6;
+			$point *= (1 + ($cards[0]['rank'] / 10));
 		}
 
 		return $point;
@@ -132,15 +132,19 @@ class Player {
 
 		switch ($rank) {
 			case 'j':
+			case 'J':
 				$result = 11;
 				break;
 			case 'q':
+			case 'Q':
 				$result = 12;
 				break;
 			case 'k':
+			case 'K':
 				$result = 13;
 				break;
 			case 'a':
+			case 'A':
 				$result = 14;
 				break;
 		}
