@@ -36,7 +36,7 @@ class Player {
 			}
 			
 			if ($me['bet'] > ($current_buy_in)){
-				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+				//$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 			}
 		} else {
 
@@ -69,7 +69,7 @@ class Player {
 			
 			if ($point > 20){
 				if ($me['bet'] > ($current_buy_in)){
-					$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+					//$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 				}
 			}
 		}
