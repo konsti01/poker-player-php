@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1607";
+	const VERSION = "NoCo1610";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -90,8 +90,10 @@ class Player {
 			$point *= 1.125;
 		}
 
-		if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1) {
-			$point *= 1.100;
+		if ($point < 22){
+			if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1) {
+				$point *= 1.100;
+			}
 		}
 
 		if ($cards[0]['rank'] - $cards[1]['rank'] == 0) {
