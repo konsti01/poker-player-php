@@ -39,8 +39,6 @@ class Player
 				} else {
 					$bet = 0;
 				}
-			} else {
-				$bet = 0;
 			}
 			
       return $bet;
