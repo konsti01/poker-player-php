@@ -17,6 +17,7 @@ class Player {
 			$cards['cards'] = json_encode(array_merge($me['hole_cards'], $community_cards));
 			$response = $this->get_rankings($cards);
 			
+			
 			if ($response['rank'] > 4){
 				$bet = $me['stack'];
 			} elseif(($response['rank'] > 3)){
@@ -25,7 +26,14 @@ class Player {
 			} elseif ($response['rank'] > 0){
 				$bet = $small_blind * 5;
 				$bet = ($bet > $current_buy_in) ? $bet : 0;
+			} elseif ($response['rank'] > 1){
+				if ($minimum_raise < $small_blind * 10){
+					$result = $small_blind * 10;
+				}
 			}
+			
+			$result = $bet;
+			
 		} else {
 
 			$point = $this->rank_pre_flop($me['hole_cards']);
