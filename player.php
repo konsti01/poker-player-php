@@ -55,7 +55,7 @@ class Player {
 			} elseif ($point > ($this->_max_point * 0.6)) {
 				$bet = $minimum_raise * 5;
 			} else {
-				
+				$result = 0;
 			}
 
 			if ($jolapomvan) {
