@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1619";
+	const VERSION = "NoCo1625";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -46,7 +46,7 @@ class Player {
 			$nagyonjolapomvan = false;
 			// if ($point > $this->_max_point)
 			if ($point > $this->_all_in) {
-				$bet = $me['stack'] > 1000 ? 1000 : $me['stack'];
+				$bet = $me['stack'] > 1000 ? 1000 : 500;
 				$jolapomvan = true;
 				$nagyonjolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.8)) {
@@ -98,7 +98,7 @@ class Player {
 			$point *= 1.125;
 		}
 
-		if ($point < 22){
+		if ($point < 22 && $point > 8){
 			if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1) {
 				$point *= 1.100;
 			}
