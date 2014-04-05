@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1352";
+	const VERSION = "NoCo1355";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -16,7 +16,7 @@ class Player {
 
 		//Akkor volt emelés
 		if ($current_buy_in > $small_blind * 2) {
-			$bet = $current_buy_in;
+			//$bet = $current_buy_in;
 		}
 
 		$jolapomvan = false;
