@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1228";
+	const VERSION = "NoCo1247";
 
 	public function betRequest($game_state) {
 		$bet = 0;
@@ -31,6 +31,10 @@ class Player {
 				}
 			}
 		} else {
+			if ($small_blind == $me['bet'] && $current_buy_in == $small_blind){
+				$bet = $current_buy_in;
+			}
+			
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
 				$bet += $minimum_raise;
 				if ($this->is_high($me['hole_cards'][0]['rank'])){
