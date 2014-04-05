@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1529";
+	const VERSION = "NoCo1536";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -62,6 +62,10 @@ class Player {
 					}
 				}
 			}
+		}
+		
+		if ($me['bet'] > ($current_by_in / 2)){
+			$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 		}
 		
 		return $bet;
