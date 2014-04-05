@@ -32,10 +32,12 @@ class Player {
 
 			$minimum_raise = $small_blind * 2;
 			$jolapomvan = false;
+			$nagyonjolapomvan = false;
 			// if ($point > $this->_max_point)
 			if ($point > $this->_all_in) {
 				$bet = $me['stack'] > 1000 ? 1000 : $me['stack'];
 				$jolapomvan = true;
+				$nagyonjolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.8)) {
 				$bet = $minimum_raise * 10;
 				$jolapomvan = true;
@@ -47,8 +49,11 @@ class Player {
 
 			if ($jolapomvan) {
 				$result = ($bet > $current_buy_in) ? $bet : $current_buy_in;
-				if($this->ketten_vagyunk($players)){
-					$result = $me['stack'];
+				if ($nagyonjolapomvan){
+					$result *= 2;
+					if($this->ketten_vagyunk($players)){
+						$result = $me['stack'];
+					}
 				}
 			}
 		}
