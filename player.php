@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "NoCo1058";
+    const VERSION = "NoCo1100";
 
     public function betRequest($game_state)
     {
@@ -17,7 +17,7 @@ class Player
 			try {
 				$cards = array_merge($players[$in_action]['hole_cards'], $community_cards);
 
-				$ch = curl_init("localhost:2048");
+				$ch = curl_init("http://localhost:2048");
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
 				curl_setopt($ch,CURLOPT_POST, count($cards));
