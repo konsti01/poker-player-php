@@ -11,6 +11,7 @@ class Player
 
 			
 			$response = null;
+			/*
 			try {
 				$cards = array_merge($players[$in_action]['hole_cards'], $community_cards);
 
@@ -28,7 +29,7 @@ class Player
 				
 			} catch (Exception $e){
 				
-			}
+			}*/
 			//http://192.168.57.181:2048/
 			
 			$bet = $current_buy_in - $me['bet'];
