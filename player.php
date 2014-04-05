@@ -184,6 +184,18 @@ class Player {
 		fclose($stderr);
 		return $response;
 	}
+	
+	private function asd(){
+		$stderr = fopen("php://stderr", "w");
+		$ch = curl_init("http://localhost:1337/bet_request");
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+		curl_exec($ch);
+		$error = curl_error($ch);
+		curl_close($ch);
+		fwrite($stderr, $error . " - bsd");
+		fclose($stderr);
+	}
 
 	public function showdown($game_state) {
 		
