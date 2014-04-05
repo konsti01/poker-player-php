@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "NoCo1054";
+    const VERSION = "NoCo1056";
 
     public function betRequest($game_state)
     {
@@ -26,9 +26,10 @@ class Player
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
 				curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+				$error = curl_error($ch);
 				$response = curl_exec($ch);
 				curl_close($ch);
-				fwrite($stderr, "bello".$response);
+				fwrite($stderr, $error." - ".$response);
 				$response = json_decode($response, true);
 			} catch (Exception $e){
 				fwrite($stderr, "hello".$e->error());
