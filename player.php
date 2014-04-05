@@ -2,10 +2,9 @@
 
 class Player {
 
-	const VERSION = "NoCo1201";
+	const VERSION = "NoCo1208";
 
 	public function betRequest($game_state) {
-		return 1000;
 		extract($game_state);
 		$me = $players[$in_action];
 
