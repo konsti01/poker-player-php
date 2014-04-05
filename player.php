@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1445";
+	const VERSION = "NoCo1502";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -30,11 +30,6 @@ class Player {
 
 			$point = $this->rank_pre_flop($me['hole_cards']);
 
-			//Akkor volt emelés
-			if ($current_buy_in > $small_blind * 2) {
-				//$bet = $current_buy_in;
-			}
-
 			$minimum_raise = $small_blind * 2;
 			$jolapomvan = false;
 			// if ($point > $this->_max_point)
@@ -46,14 +41,17 @@ class Player {
 				$jolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.6)) {
 				$bet = $minimum_raise * 5;
-				$jolapomvan = true;
+			} else {
+				
 			}
 
 			if ($jolapomvan) {
 				$result = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+				if($this->ketten_vagyunk($players)){
+					$result = $me['stack'];
+				}
 			}
 		}
-		$result = min(array($bet, $me['stack']));
 		return $result;
 
 		$response = null;
@@ -101,6 +99,16 @@ class Player {
 
 		$bet = rand($current_buy_in - $me['bet'], 600);
 		return $bet;
+	}
+	
+	private function ketten_vagyunk($players){
+		$out = 0;
+		foreach ($players as $p){
+			if ($p['status'] == 'out'){
+				$out++;
+			}
+		}
+		return $out>0;
 	}
 
 	private function rank_pre_flop($cards) {
