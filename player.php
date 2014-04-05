@@ -12,6 +12,8 @@ class Player
 			
 			$response = null;
 			
+			$stderr = fopen("php://stderr", "w");
+			
 			try {
 				$cards = array_merge($players[$in_action]['hole_cards'], $community_cards);
 
@@ -30,6 +32,7 @@ class Player
 			} catch (Exception $e){
 				
 			}
+			fwrite($stderr, $response);
 			//http://192.168.57.181:2048/
 			
 			$bet = $current_buy_in - $me['bet'];
@@ -40,6 +43,7 @@ class Player
 					$bet = 0;
 				}
 			}
+			fclose($stderr);
 			
       return $bet;
     }
