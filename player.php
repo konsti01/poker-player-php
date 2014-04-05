@@ -64,7 +64,7 @@ class Player {
 			}
 		}
 		
-		if ($me['bet'] > ($current_by_in / 2)){
+		if ($me['bet'] > ($current_buy_in / 2)){
 			$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 		}
 		
