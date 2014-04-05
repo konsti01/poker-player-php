@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1216";
+	const VERSION = "NoCo1224";
 
 	public function betRequest($game_state) {
 		extract($game_state);
