@@ -28,6 +28,9 @@ class Player {
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
 				$bet += $minimum_raise;
 			}
+			if ($bet > 400){
+				$bet = 0;
+			}
 		}
 
 		return $bet;
