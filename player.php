@@ -32,8 +32,11 @@ class Player {
 		} else {
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
 				$bet += $minimum_raise;
+				if ($this->is_high($me['hole_cards'][0]['rank'])){
+					$bet += $minimum_raise * 10;
+				}
 			}
-			if ($bet > 400) {
+			if ($me['bet'] < 500 && $bet > 400) {
 				$bet = 0;
 			}
 		}
@@ -44,6 +47,21 @@ class Player {
 
 
 		return $bet;
+	}
+	
+	private function is_high($card){
+		switch ($card){
+			case 'k':
+			case 'q':
+			case 'j':
+			case 'a':
+				$result = true;
+				break;
+			default :
+				$result = false;
+				break;
+		}
+		return $result;
 	}
 
 	private function get_rankings($cards) {
