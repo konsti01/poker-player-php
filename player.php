@@ -46,10 +46,10 @@ class Player {
 				$jolapomvan = true;
 				$nagyonjolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.8)) {
-				$bet = $minimum_raise * 10;
+				$bet = $minimum_raise * 7;
 				$jolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.6)) {
-				$bet = $minimum_raise * 5;
+				$bet = $minimum_raise * 3;
 			}
 
 			if ($jolapomvan) {
