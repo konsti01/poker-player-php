@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1133";
+	const VERSION = "NoCo1134";
 
 	public function betRequest($game_state) {
 		extract($game_state);
@@ -24,8 +24,6 @@ class Player {
 				$bet = 0;
 			}
 		} else {
-
-
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
 				$bet += $minimum_raise;
 			}
@@ -40,7 +38,7 @@ class Player {
 		$stderr = fopen("php://stderr", "w");
 
 		try {
-			$ch = curl_init("http://localhost:2048");
+			$ch = curl_init("http://192.168.57.181:2048");
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
 			curl_setopt($ch, CURLOPT_POST, count($cards));
