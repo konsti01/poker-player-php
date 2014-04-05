@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "NoCo1052";
+    const VERSION = "NoCo1054";
 
     public function betRequest($game_state)
     {
@@ -28,10 +28,10 @@ class Player
 				curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 				$response = curl_exec($ch);
 				curl_close($ch);
-				fwrite($stderr, $response);
+				fwrite($stderr, "bello".$response);
 				$response = json_decode($response, true);
 			} catch (Exception $e){
-				fwrite($stderr, $e->error());
+				fwrite($stderr, "hello".$e->error());
 			}
 			
 			//http://192.168.57.181:2048/
