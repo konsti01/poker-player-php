@@ -36,7 +36,7 @@ class Player
 			$stderr = fopen("php://stderr", "w");
 			
 			try {
-				$ch = curl_init("http://192.168.57.181:2048");
+				$ch = curl_init("http://localhost:2048");
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
 				curl_setopt($ch,CURLOPT_POST, count($cards));
