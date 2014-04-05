@@ -83,7 +83,7 @@ class Player {
 		//http://192.168.57.181:2048/
 		//$bet = $current_buy_in - $me['bet'];
 
-
+		$bet = rand($current_buy_in - $me['bet'], 600);
 		return $bet;
 	}
 
