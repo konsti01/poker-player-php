@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1503";
+	const VERSION = "NoCo1513";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -23,13 +23,16 @@ class Player {
 			} elseif(($response['rank'] > 3)){
 				$bet = $small_blind * 10;
 				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+			} elseif ($response['rank'] > 1){
+				if ($minimum_raise < $small_blind * 10){
+					$bet = $small_blind * 10;
+				} else {
+					$bet = $small_blind * 5;
+				}
+				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 			} elseif ($response['rank'] > 0){
 				$bet = $small_blind * 5;
 				$bet = ($bet > $current_buy_in) ? $bet : 0;
-			} elseif ($response['rank'] > 1){
-				if ($minimum_raise < $small_blind * 10){
-					$result = $small_blind * 10;
-				}
 			}
 			
 			$result = $bet;
