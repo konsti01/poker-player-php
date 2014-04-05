@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1604";
+	const VERSION = "NoCo1607";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -46,10 +46,10 @@ class Player {
 				$jolapomvan = true;
 				$nagyonjolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.8)) {
-				$bet = $minimum_raise * 7;
+				$bet = $minimum_raise * 9;
 				$jolapomvan = true;
 			} elseif ($point > ($this->_max_point * 0.6)) {
-				$bet = $minimum_raise * 3;
+				$bet = $minimum_raise * 4;
 			}
 
 			if ($jolapomvan) {
