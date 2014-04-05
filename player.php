@@ -57,11 +57,11 @@ class Player {
 				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 				if ($nagyonjolapomvan){
 					$bet *= 2;
-					if($this->ketten_vagyunk($players)){
-						$bet = $me['stack'];
-					}
 				}
 			}
+		}
+		if($this->ketten_vagyunk($players)){
+			$bet = $me['stack'];
 		}
 		
 		return $bet;
