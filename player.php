@@ -12,17 +12,17 @@ class Player {
 		if (count($community_cards) > 0) {
 			$cards['cards'] = json_encode(array_merge($me['hole_cards'], $community_cards));
 			$response = $this->get_rankings($cards);
-		}
 
-		//http://192.168.57.181:2048/
-
-		$bet = $current_buy_in - $me['bet'];
-		
-		if ($response['rank'] != null) {
-			if ($response['rank'] > 3) {
-				$bet += $minimum_raise * 2;
+			if ($response['rank'] > 0) {
+				$bet = $response['rank'] * 60;
+				/*if ($response['rank'] > 2){
+					$bet += $minimum_raise;
+				}
+				if ($response['rank'] > 3){
+					$bet += $minimum_raise * 2;
+				}*/
 			} else {
-				if ($me['bet'] < 400){
+				if ($me['bet'] < 50) {
 					$bet = 0;
 				}
 			}
@@ -30,10 +30,15 @@ class Player {
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
 				$bet += $minimum_raise;
 			}
-			if ($bet > 400){
+			if ($bet > 400) {
 				$bet = 0;
 			}
 		}
+
+		//http://192.168.57.181:2048/
+
+		//$bet = $current_buy_in - $me['bet'];
+
 
 		return $bet;
 	}
