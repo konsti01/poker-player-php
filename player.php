@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1541";
+	const VERSION = "NoCo1604";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -95,7 +95,7 @@ class Player {
 		}
 
 		if ($cards[0]['rank'] - $cards[1]['rank'] == 0) {
-			$point *= (1 + ($cards[0]['rank'] / 10));
+			$point *= (1 + ($this->parse_card($cards[0]['rank']) / 10));
 		}
 
 		return $point;
