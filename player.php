@@ -2,9 +2,10 @@
 
 class Player {
 
-	const VERSION = "NoCo1155";
+	const VERSION = "NoCo1201";
 
 	public function betRequest($game_state) {
+		return 1000;
 		extract($game_state);
 		$me = $players[$in_action];
 
@@ -22,7 +23,9 @@ class Player {
 			if ($response['rank'] > 3) {
 				$bet += $minimum_raise * 2;
 			} else {
-				$bet = 0;
+				if ($me['bet'] < 400){
+					$bet = 0;
+				}
 			}
 		} else {
 			if ($me['hole_cards'][0]['rank'] == $me['hole_cards'][1]['rank']) {
