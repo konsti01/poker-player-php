@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1356";
+	const VERSION = "NoCo1402";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -12,32 +12,42 @@ class Player {
 		extract($game_state);
 		$me = $players[$in_action];
 
-		$point = $this->rank_pre_flop($me['hole_cards']);
+		if (count($community_cards) > 0) {
+			$cards['cards'] = json_encode(array_merge($me['hole_cards'], $community_cards));
+			$response = $this->get_rankings($cards);
+			
+			if ($response['rank'] > 4){
+				$bet = $me['stack'];
+			} elseif(($response['rank'] > 3)){
+				$bet = $small_blind * 10;
+				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
+			}
+		} else {
 
-		//Akkor volt emelés
-		if ($current_buy_in > $small_blind * 2) {
-			//$bet = $current_buy_in;
+			$point = $this->rank_pre_flop($me['hole_cards']);
+
+			//Akkor volt emelés
+			if ($current_buy_in > $small_blind * 2) {
+				//$bet = $current_buy_in;
+			}
+
+			$jolapomvan = false;
+			// if ($point > $this->_max_point)
+			if ($point > $this->_all_in) {
+				$bet = $me['stack'] > 1000 ? 1000 : $me['stack'];
+				$jolapomvan = true;
+			} elseif ($point > $this->_max_point * 0.8) {
+				$bet = $minimum_raise * 10;
+				$jolapomvan = true;
+			} elseif ($point > $this->_max_point * 0.6) {
+				$bet = $minimum_raise * 5;
+			}
+
+			if ($jolapomvan) {
+				return ($bet > $current_buy_in) ? $bet : $current_buy_in;
+			}
 		}
-
-		$jolapomvan = false;
-		// if ($point > $this->_max_point)
-		if ($point > $this->_all_in) {
-			$bet = $me['stack'] > 1000 ? 1000 : $me['stack'];
-			$jolapomvan = true;
-		} elseif ($point > $this->_max_point * 0.8) {
-			$bet = $minimum_raise * 10;
-			$jolapomvan = true;
-		} elseif ($point > $this->_max_point * 0.6) {
-			$bet = $minimum_raise * 5;
-		}
-
-		if ($jolapomvan){
-			return ($bet > $current_buy_in) ? $bet : $current_buy_in;
-		}
-
 		return $bet;
-
-
 
 		$response = null;
 		if (count($community_cards) > 0) {
@@ -49,12 +59,12 @@ class Player {
 				if ($minimum_raise > $bet) {
 					$bet = $minimum_raise;
 				}
-				/* if ($response['rank'] > 2){
+				 if ($response['rank'] > 2){
 				  $bet += $minimum_raise;
 				  }
 				  if ($response['rank'] > 3){
 				  $bet += $minimum_raise * 2;
-				  } */
+				  }
 			} else {
 				if ($me['bet'] < 50) {
 					$bet = 0;
@@ -95,12 +105,12 @@ class Player {
 		if ($cards[0]['suit'] == $cards[1]['suit']) {
 			$point *= 1.125;
 		}
-		
-		if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1){
+
+		if (abs($cards[0]['rank'] - $cards[1]['rank']) == 1) {
 			$point *= 1.100;
 		}
-		
-		if ($cards[0]['rank'] - $cards[1]['rank'] == 0){
+
+		if ($cards[0]['rank'] - $cards[1]['rank'] == 0) {
 			$point *= 1.6;
 		}
 
