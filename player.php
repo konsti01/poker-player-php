@@ -46,8 +46,8 @@ class Player {
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $cards);
 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 			$response = curl_exec($ch);
 			$error = curl_error($ch);
 			curl_close($ch);
