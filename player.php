@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1616";
+	const VERSION = "NoCo1619";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -67,7 +67,7 @@ class Player {
 			}
 			
 			if ($point > 20){
-				if ($me['bet'] > ($current_buy_in / 2)){
+				if ($me['bet'] > ($current_buy_in)){
 					$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
 				}
 			}
