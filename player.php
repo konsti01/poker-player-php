@@ -8,6 +8,7 @@ class Player {
 	private $_all_in = 25;
 
 	public function betRequest($game_state) {
+		$this->asd();
 		$bet = 0;
 		extract($game_state);
 		$me = $players[$in_action];
@@ -39,10 +40,10 @@ class Player {
 			if ($point > $this->_all_in) {
 				$bet = $me['stack'] > 1000 ? 1000 : $me['stack'];
 				$jolapomvan = true;
-			} elseif ($point > $this->_max_point * 0.8) {
+			} elseif ($point > ($this->_max_point * 0.8)) {
 				$bet = $minimum_raise * 10;
 				$jolapomvan = true;
-			} elseif ($point > $this->_max_point * 0.6) {
+			} elseif ($point > ($this->_max_point * 0.6)) {
 				$bet = $minimum_raise * 5;
 			}
 
