@@ -2,12 +2,15 @@
 
 class Player
 {
-    const VERSION = "NoCo1007";
+    const VERSION = "NoCo1011";
 
     public function betRequest($game_state)
     {
 			//http://192.168.57.138:4567
-			$bet = $game_state['current_buy_in'] - $game_state['players'][$game_state['in_action']]['bet'];
+			extract($game_state);
+			$me = $players[$in_action];
+			
+			$bet = $current_buy_in - $me['bet'];
       return $bet;
     }
 
