@@ -2,7 +2,7 @@
 
 class Player {
 
-	const VERSION = "NoCo1625";
+	const VERSION = "NoCo1627";
 
 	private $_max_point = 28;
 	private $_all_in = 25;
@@ -18,7 +18,8 @@ class Player {
 			
 			
 			if ($response['rank'] > 4){
-				$bet = $me['stack'];
+				$bet = $me['stack'] * 0.6;
+				$bet = ($bet > $current_buy_in) ? $bet : 0;
 			} elseif(($response['rank'] > 3)){
 				$bet = $small_blind * 10;
 				$bet = ($bet > $current_buy_in) ? $bet : $current_buy_in;
