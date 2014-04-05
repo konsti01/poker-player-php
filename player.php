@@ -7,7 +7,7 @@ class Player {
 	public function betRequest($game_state) {
 		$bet = 0;
 		extract($game_state);
-//		$me = $players[$in_action];
+		$me = $players[$in_action];
 //
 //		$response = null;
 //		if (count($community_cards) > 0) {
@@ -51,7 +51,7 @@ class Player {
 //		//$bet = $current_buy_in - $me['bet'];
 //
 //
-		$bet = rand(0, 600);
+		$bet = rand($current_buy_in - $me['bet'], 600);
 		
 		return $bet;
 	}
